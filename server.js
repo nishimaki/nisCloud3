@@ -30,12 +30,13 @@ var appModule = require('./server_modules');
 // TEST
 // ncmb.getTest();
 
+// チャット初期処理
+appModule.chat.init(io);
+
 // ユーザー初期処理
 // appModule.user.init(app);
 // 顧客初期処理
-// appModule.custmer.init(app);
-// チャット初期処理
-// appModule.chat.init(io);
+appModule.mntcustmer.init(app);
 // ポータル初期処理
 // appModule.portal.init(app);
 // テストデータ

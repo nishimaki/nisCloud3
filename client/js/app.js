@@ -4,13 +4,6 @@
     // ---------------------------------
     var app = angular.module('myApp', [
               'ui.router'
-            // ,'app.app'
-            // ,'app.header'
-            // ,'app.login'
-            // ,'app.message'
-            // ,'app.chat'
-            // ,'app.portal'
-            // ,'app.maint'
          ]);
 
     // ---------------------------------
@@ -27,25 +20,25 @@
                 url: '/home',
                 templateUrl: 'webclient/home.html'
             })
-            .state('home.null', {
+            .state('home.blank', {
                 isLoginRequired: true,
-                url: '/null',
-                templateUrl: 'webclient/null.html'
+                url: '/blank',
+                templateUrl: 'webclient/blank.html'
             })
             .state('home.portal', {
                 isLoginRequired: true,
                 url: '/portal',
                 templateUrl: 'webclient/portal.html'
             })
-            .state('home.mntCustmer', {
+            .state('home.mntcuts', {
                 isLoginRequired: true,
-                url: '/mnt_custmer',
-                templateUrl: 'app/mnt/mnt_custmer.html'
+                url: '/mnt/custmer',
+                templateUrl: 'webclient/mnt/custmer.html'
             })
             .state('home.chat', {
                 isLoginRequired: true,
                 url: '/chat',
-                templateUrl: 'chat.html'
+                templateUrl: 'webclient/chat.html'
             })
             .state('setting', {
                 url: '/setting',

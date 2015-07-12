@@ -12,7 +12,9 @@
     "form-data": "^1.0.0-rc1",
     "localStorage": "^1.0.3",
     "moment": "^2.10.3",
+    "mongoose": "^4.0.6",
     "socket.io": "~0.9.14",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "ya-csv": "^0.9.4"
   }
 }
