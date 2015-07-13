@@ -79,40 +79,62 @@
 			});
 
 		};
+
+		// ---------------------------------
+		// フォーム表示
+		// ---------------------------------
+		function MakeForm(event, data) {
+			// console.log(event);
+			// console.log(data);
+	
+			$("#myForm").w2destroy("myForm");
+			$('#myForm').w2form({ 
+		        name  : 'myForm',
+		        url   : 'custmer',
+		        fields: [
+		            { field: 'code', type: 'text', required: true, html: { caption: 'コード', attr: 'style="" maxlength="5" size="5"' }},
+		            { field: 'name_sei',  type: 'text', required: true, html: { caption: '姓', attr: 'style="" size="20"' }},
+		            { field: 'name_mei',  type: 'text', required: true, html: { caption: '名', attr: 'style="" size="20"' }},
+		            { field: 'kananame_sei',  type: 'text', required: false, html: { caption: 'かな(姓)', attr: 'style="" size="20"' }},
+		            { field: 'kananame_mei',  type: 'text', required: false, html: { caption: 'かな(名)', attr: 'style="" size="20"' }},
+		            {
+		            	field: 'birthday',
+		            	type: 'date',
+		            	required: false,
+		            	options: {
+		            		format: 'yyyy/m/d',
+		            	},
+		            	html: {
+		            		caption: '誕生日',
+		            		attr: 'style="" size="20"'
+		            	}
+		            },
+		            { field: 'yuubin_no',  type: 'text', required: false, html: { caption: '郵便番号', attr: 'style="" maxlength="8" size="8"' }},
+		            { field: 'addr',  type: 'text', required: false, html: { caption: '住所', attr: 'style="" size="40"' }},
+		            { field: 'tel',  type: 'text', required: false, html: { caption: '電話番号', attr: 'style="" size="20"' } },
+		            { field: 'email',  type: 'email', required: false, html: { caption: 'EMAIL', attr: 'style="" size="40"' } },
+		        ],
+		        record: data,
+		        actions: {
+		            reset: function () {
+		                this.clear();
+		            },
+		            save: function () {
+		                this.save(data, function (){
+		                	console.log("save");
+		                });
+		            }
+		        }
+		    });
+		    
+			w2ui['myForm'].on('change', function (target, eventData) {
+			    console.log(target);
+			    console.log(eventData);
+			});		
+			w2ui['myForm'].on('load', function (target, eventData) {
+			    console.log(target);
+			    console.log(eventData);
+			});		
+			
+		}
 	});
-
-	// ---------------------------------
-	// フォーム表示
-	// ---------------------------------
-	function MakeForm(event, data) {
-		// console.log(event);
-		// console.log(data);
-
-		$("#myForm").w2destroy("myForm");
-		$('#myForm').w2form({ 
-	        name  : 'myForm',
-	        url   : 'custmer',
-	        fields: [
-	            { field: 'code', type: 'text', required: true, html: { caption: 'コード', attr: 'style="" maxlength="3" size="3"' }},
-	            { field: 'name_sei',  type: 'text', required: true, html: { caption: '姓', attr: 'style="" size="20"' }},
-	            { field: 'name_mei',  type: 'text', required: true, html: { caption: '名', attr: 'style="" size="20"' }},
-	            { field: 'kananame_sei',  type: 'text', required: true, html: { caption: 'かな(姓)', attr: 'style="" size="20"' }},
-	            { field: 'kananame_mei',  type: 'text', required: true, html: { caption: 'かな(名)', attr: 'style="" size="20"' }},
-	            { field: 'birthday',  type: 'date', format: 'yyyy/m/d', required: true, html: { caption: '誕生日', attr: 'style="" size="20"'}},
-	            { field: 'yuubin_no',  type: 'text', required: true, html: { caption: '郵便番号', attr: 'style="" maxlength="8" size="8"' }},
-	            { field: 'addr',  type: 'text', required: true, html: { caption: '住所', attr: 'style="" size="40"' }},
-	            { field: 'tel',  type: 'text', required: true, html: { caption: '電話番号', attr: 'style="" size="20"' } },
-	            { field: 'email',  type: 'email', required: true, html: { caption: 'EMAIL', attr: 'style="" size="40"' } },
-	        ],
-	        record: data,
-	        actions: {
-	            reset: function () {
-	                this.clear();
-	            },
-	            save: function () {
-	                this.save();
-	            }
-	        }
-	    });
-
-	};

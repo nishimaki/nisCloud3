@@ -1,17 +1,17 @@
 // ---------------------------------
-// Custmerモジュール
+// Itemモジュール
 // ---------------------------------
 module.exports.init = function(moduleApp) {
 
-    var Custmer = require('./model/custmers').Custmer;
+    var Item = require('./model/items').Item;
 
     // ---------------------------------
-    // 顧客リストの取得
+    // 商品リストの取得
     // ---------------------------------
-    moduleApp.get('/custmer', function(req, res) {
-        console.log("顧客リストの取得 ");
+    moduleApp.get('/item', function(req, res) {
+        console.log("商品リストの取得 ");
 
-        Custmer.find({}, {}, {
+        Item.find({}, {}, {
             sort: {
                 'code': 1
             },
@@ -23,29 +23,25 @@ module.exports.init = function(moduleApp) {
     });
 
     // ---------------------------------
-    // 顧客リストの保存
+    // 商品リストの保存
     // ---------------------------------
-    moduleApp.post('/custmer', function(req, res) {
-        console.log("顧客リストの保存 ");
+    moduleApp.post('/Item', function(req, res) {
+        console.log("商品リストの保存 ");
         console.dir(req.body);
         var data = req.body.record;
-        Custmer.findOne({_id:data._id},function(err,cust){
-            if(err || cust === null){
+        Item.findOne({_id:data._id},function(err,itemdata){
+            if(err || itemdata === null){
                 console.log("err ");
                 return;
             }
-            cust.code = data.code;
-            cust.name_sei = data.name_sei;
-            cust.name_mei = data.name_mei;
-            cust.kananame_sei = data.kananame_sei;
-            cust.kananame_mei = data.kananame_mei;
-            cust.birthday = data.birthday;
-            cust.yuubin_no = data.yuubin_no;
-            cust.addr = data.addr;
-            cust.tel = data.tel;
-            cust.email = data.email;
-            
-            cust.save(function(err) {
+            itemdata.code = data.code;
+            itemdata.name = data.name;
+            itemdata.spec = data.spec;
+            itemdata.price = data.price;
+            itemdata.maker = data.maker;
+            itemdata.salesDate = data.salesDate;
+
+            itemdata.save(function(err) {
                 if (err) {
                     console.log("save error:" + err);
                 } else {
@@ -57,23 +53,23 @@ module.exports.init = function(moduleApp) {
     });
 
     // ---------------------------------
-    // CSV顧客テストデータの登録
+    // CSV商品テストデータの登録
     // ---------------------------------
-    moduleApp.get('/createCustmer', function(req, res) {
-        console.log("createCustmer get!!");
+    moduleApp.get('/createItem', function(req, res) {
+        console.log("createItem get!!");
         var readCount = 0;
 
         // collection削除
-        Custmer.remove({}, function(err, numberRemoved) {
+        Item.remove({}, function(err, numberRemoved) {
             console.log("inside remove call back" + numberRemoved);
             // CSV読み込み
             var csv = require('ya-csv');
-            var reader = csv.createCsvFileReader('./csv/custmer.csv');
-            reader.setColumnNames(['code', 'name_sei', 'name_mei', 'kananame_sei', 'kananame_mei', 'birthday', 'yuubin_no', 'addr', 'tel', 'email']);
+            var reader = csv.createCsvFileReader('./csv/item.csv');
+            reader.setColumnNames(['code', 'name', 'spec', 'price', 'maker', 'salesDate']);
             reader.addListener('data', function(data) {
                 readCount++;
-                var newCustmer = new Custmer(data);
-                newCustmer.save(function(err) {
+                var newItem = new Item(data);
+                newItem.save(function(err) {
                     if (err) {
                         console.log("insert error:" + err);
                     }

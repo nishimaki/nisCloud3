@@ -13,7 +13,7 @@
     //      isLoginRequired:ログインが必要な画面
     // ---------------------------------
     app.config(function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("/home.null");
+        $urlRouterProvider.otherwise("/blank");
         $stateProvider
             .state('home', {
                 isLoginRequired: true,

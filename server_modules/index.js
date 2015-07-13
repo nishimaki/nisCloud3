@@ -12,4 +12,5 @@ module.exports = {
     chat: require('./chat'),
     portal: require('./portal'),
     mntcustmer: require('./mntCustmer'),
+    mntitem: require('./mntItem'),
 };
