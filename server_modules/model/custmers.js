@@ -3,7 +3,7 @@ function validator(v) {
     return v.length > 0;
 }
 
-var Custmer = new mongoose.Schema({
+var Custmer = new Schema({
     code: {
         type: String,
         validate: [validator, "Empty Error"]

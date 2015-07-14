@@ -80,12 +80,16 @@
     });
 
     // mongo TEST
-    // var model = require('./model/posts');
-    // var Post = model.Post;
+    var model = require('./model/mongotest');
 
-    // moduleApp.get('/mongo', function(req, res) {
+    app.get('/mongo', function(req, res) {
+        var parent = new Parent({});
+        parent.save();
+        var child = new Child({parent:parent._id});
+        child.save(); //the parent children property will now contain child's id 
+        // var child2 = new Child({parent:parent._id});
+        // child2.save(); //the parent children property will now contain child's id 
+        child.remove();
 
-    //     Post.find({}, function(err, items) {
-    //         res.send(items);
-    //     });
-    // });
+        res.send("OK");
+    });
