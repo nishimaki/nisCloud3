@@ -8,3 +8,4 @@ var ChildSchema = new Schema({
 });
 ChildSchema.plugin(relationship, { relationshipPathName:'parent' });
 Child = mongoose.model("Child", ChildSchema);
+
