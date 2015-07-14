@@ -15,7 +15,7 @@ module.exports.init = function(moduleApp) {
             sort: {
                 'code': 1
             },
-            limit: 300
+            limit: 0
         }, function(err, items) {
             res.send(items);
         });
@@ -25,7 +25,7 @@ module.exports.init = function(moduleApp) {
     // ---------------------------------
     // 商品リストの保存
     // ---------------------------------
-    moduleApp.post('/Item', function(req, res) {
+    moduleApp.post('/item', function(req, res) {
         console.log("商品リストの保存 ");
         console.dir(req.body);
         var data = req.body.record;

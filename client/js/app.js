@@ -35,6 +35,16 @@
                 url: '/mnt/custmer',
                 templateUrl: 'webclient/mnt/custmer.html'
             })
+            .state('home.mntitem', {
+                isLoginRequired: true,
+                url: '/mnt/item',
+                templateUrl: 'webclient/mnt/item.html'
+            })
+            .state('home.mnttool', {
+                isLoginRequired: true,
+                url: '/mnt/tool',
+                templateUrl: 'webclient/mnt/tool.html'
+            })
             .state('home.chat', {
                 isLoginRequired: true,
                 url: '/chat',
@@ -51,6 +61,10 @@
             .state('register', {
                 url: '/register',
                 templateUrl: 'webclient/register.html'
+            })
+            .state('mitsumori', {
+                url: '/mitsumori',
+                templateUrl: 'webclient/mitsumori.html'
             });
 
     });

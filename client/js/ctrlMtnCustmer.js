@@ -33,38 +33,54 @@
 				$("#myGridCust").w2destroy("myGridCust");
 				$('#myGridCust').w2grid({
 					name: 'myGridCust',
+			        show: { 
+			            toolbar: true,
+			            footer: true,
+			            toolbarAdd: true,
+			            toolbarDelete: true,
+			            toolbarSave: true,
+			            toolbarEdit: true
+			        },
 					columns: [{
 							field: 'code',
 							caption: 'code',
-							size: '50px'
+							size: '50px',
+							sortable: true
 		                }, {
 							field: 'name_sei',
 							caption: '姓',
-							size: '100px'
+							size: '100px',
+							sortable: true
 		                }, {
 							field: 'name_mei',
 							caption: '名',
-							size: '100px'
+							size: '100px',
+							sortable: true
 		                }, {
 							field: 'kananame_sei',
 							caption: 'かな(姓)',
-							size: '120px'
+							size: '120px',
+							sortable: true
 		                }, {
 							field: 'kananame_mei',
 							caption: 'かな(名)',
-							size: '120px'
+							size: '120px',
+							sortable: true
 		                }, {
 							field: 'birthday',
 							caption: '誕生日',
-							size: '120px'
+							size: '120px',
+							sortable: true
 		                }, {
 							field: 'yuubin_no',
 							caption: '郵便番号',
-							size: '120px'
+							size: '120px',
+							sortable: true
 		                }, {
 							field: 'addr',
 							caption: '住所',
-							size: '120px'
+							size: '120px',
+							sortable: true
 	    	            }, ],
 					records: $scope.custmerList,
 					// ---------------------------------

@@ -15,7 +15,7 @@ module.exports.init = function(moduleApp) {
             sort: {
                 'code': 1
             },
-            limit: 300
+            limit: 0
         }, function(err, items) {
             res.send(items);
         });
